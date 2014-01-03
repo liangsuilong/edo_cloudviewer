@@ -15,7 +15,7 @@ RUN echo "deb-src http://mirrors.ustc.edu.cn/ubuntu/ precise-backports main rest
 
 RUN apt-get -y update
 RUN apt-get -y install python-software-properties python-setuptools python-dev python-pip
-RUN add-apt-repository -y ppa:coolwanglu/pdf2htmlex ppa:rwky/redis 
+RUN add-apt-repository -y ppa:coolwanglu/pdf2htmlex 
 RUN add-apt-repository -y ppa:rwky/redis 
 RUN add-apt-repository -y ppa:guilhem-fr/swftools
 
