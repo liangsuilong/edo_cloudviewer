@@ -49,6 +49,7 @@ RUN tar xvf cloudviewer.tar.gz
 RUN rm -f cloudviewer.tar.gz
 
 RUN pip install --upgrade setuptools
+RUN cd /opt/edo_cloudviewer
 RUN cp cloudviewer/edo_cloudviewer/ubuntu.cfg .
 RUN cp cloudviewer/edo_cloudviewer/base.cfg .
 RUN cp cloudviewer/edo_cloudviewer/buildout.cfg .
