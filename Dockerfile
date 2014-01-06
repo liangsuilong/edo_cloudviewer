@@ -24,10 +24,10 @@ RUN apt-get -y install build-essential python-dev zlib1g-dev libjpeg62-dev libti
 
 RUN wget http://mirrors.ustc.edu.cn/tdf/libreoffice/stable/4.1.4/deb/x86_64/LibreOffice_4.1.4_Linux_x86-64_deb.tar.gz
 RUN tar xvf LibreOffice_4.1.4_Linux_x86-64_deb.tar.gz
-RUN cd LibreOffice_4.1.4.2_Linux_x86-64_deb/DEBS
-RUN rm -f *debian*.deb *gnome*.deb *kde*.deb
-RUN dpkg -i *.deb
-RUN cd /
+RUN rm -f LibreOffice_4.1.4.2_Linux_x86-64_deb/DEBS/libreoffice4.1-debian-menus_4.1.4-2_all.deb
+RUN rm -f LibreOffice_4.1.4.2_Linux_x86-64_deb/DEBS/libobasis4.1-kde-integration_4.1.4.2-2_amd64.deb
+RUN rm -f LibreOffice_4.1.4.2_Linux_x86-64_deb/DEBS/libobasis4.1-kde-integration_4.1.4.2-2_amd64.deb
+RUN dpkg -i LibreOffice_4.1.4.2_Linux_x86-64_deb/DEBS/*.deb
 RUN rm -rf /LibreOffice_4.1.4.2_Linux_x86-64_deb
 RUN pip install uwsgi
 
