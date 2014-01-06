@@ -48,25 +48,34 @@ RUN wget http://download.zopen.cn/releases/cloudviewer.tar.gz
 RUN tar xvf cloudviewer.tar.gz
 RUN rm -f cloudviewer.tar.gz
 
-RUN cp cloudviewer/edo_cloudviewer/{ubuntu,base,buildout}.cfg .
+RUN cp cloudviewer/edo_cloudviewer/ubuntu.cfg .
+RUN cp cloudviewer/edo_cloudviewer/base.cfg .
+RUN cp cloudviewer/edo_cloudviewer/buildout.cfg .
 RUN cp cloudviewer/edo_cloudviewer/bootstrap.py .
 RUN python bootstrap.py
 RUN bin/buildout install supervisord
 
 RUN cd app/fts_web
-RUN cp ../cloudviewer/fts_web/{buildout.cfg,bootstrap.py,app.ini,uwsgi.ini} .
+RUN cp ../cloudviewer/fts_web/uwsgi.ini .
+RUN cp ../cloudviewer/fts_web/app.ini .
+RUN cp ../cloudviewer/fts_web/bootstrap.py .
+RUN cp ../cloudviewer/fts_web/buildout.cfg .
 RUN python bootstrap.py
 RUN bin/buildout install app wsgi
 RUN cd ../../
 
 RUN cd app/fts_app
-RUN cp ../cloudviewer/fts_app/{buildout.cfg,bootstrap.py,app.ini} .
+RUN cp ../cloudviewer/fts_app/app.ini .
+RUN cp ../cloudviewer/fts_app/bootstrap.py .
+RUN cp ../cloudviewer/fts_app/buildout.cfg .
 RUN python bootstrap.py
 RUN bin/buildout install app
 RUN cd ../../
 
 RUN cd app/fts_worker
-RUN cp ../cloudviewer/fts_worker/{buildout.cfg,bootstrap.py,config.ini} .
+RUN cp ../cloudviewer/fts_worker/buildout.cfg .
+RUN cp ../cloudviewer/fts_worker/bootstrap.py .
+RUN cp ../cloudviewer/fts_worker/config.ini .
 RUN python bootstrap.py
 RUN bin/buildout install app
 RUN cd ../../
