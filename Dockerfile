@@ -20,15 +20,10 @@ RUN add-apt-repository -y ppa:rwky/redis
 RUN add-apt-repository -y ppa:guilhem-fr/swftools
 
 RUN apt-get -y update
-RUN apt-get -y install build-essential python-dev zlib1g-dev libjpeg62-dev libtiff-tools python-imaging unrtf pstotext source-highlight gsfonts ttf-wqy-zenhei ffmpeg ffmpegthumbnailer lame unrar libungif4-dev libfreetype6-dev poppler-utils nginx fontconfig libxslt1-dev wget xlhtml pdf2htmlex swftools
+RUN apt-get -y install build-essential python-dev zlib1g-dev libjpeg62-dev libtiff-tools python-imaging unrtf pstotext source-highlight gsfonts ttf-wqy-zenhei ffmpeg ffmpegthumbnailer lame unrar libungif4-dev libfreetype6-dev poppler-utils nginx fontconfig libxslt1-dev wget xlhtml pdf2htmlex swftools && apt-get -y clean all
 
 RUN wget http://mirrors.ustc.edu.cn/tdf/libreoffice/stable/4.1.4/deb/x86_64/LibreOffice_4.1.4_Linux_x86-64_deb.tar.gz
-RUN tar xvf LibreOffice_4.1.4_Linux_x86-64_deb.tar.gz
-RUN rm -f LibreOffice_4.1.4.2_Linux_x86-64_deb/DEBS/libreoffice4.1-debian-menus_4.1.4-2_all.deb
-RUN rm -f LibreOffice_4.1.4.2_Linux_x86-64_deb/DEBS/libobasis4.1-kde-integration_4.1.4.2-2_amd64.deb
-RUN rm -f LibreOffice_4.1.4.2_Linux_x86-64_deb/DEBS/libobasis4.1-kde-integration_4.1.4.2-2_amd64.deb
-RUN dpkg -i LibreOffice_4.1.4.2_Linux_x86-64_deb/DEBS/*.deb
-RUN rm -rf /LibreOffice_4.1.4.2_Linux_x86-64_deb
+RUN tar xvf LibreOffice_4.1.4_Linux_x86-64_deb.tar.gz && dpkg -i LibreOffice_4.1.4.2_Linux_x86-64_deb/DEBS/*.deb && rm -rf /LibreOffice_4.1.4.2_Linux_x86-64_deb
 RUN pip install uwsgi
 
 WORKDIR /opt
@@ -44,9 +39,7 @@ RUN mkdir -p /opt/edo_cloudviewer/buildout-cache/eggs
 
 
 WORKDIR /opt/edo_cloudviewer
-RUN wget http://download.zopen.cn/releases/cloudviewer_test4.tar.gz
-RUN tar xvf cloudviewer_test4.tar.gz
-RUN rm -f cloudviewer_test4.tar.gz
+RUN wget http://download.zopen.cn/releases/cloudviewer_test4.tar.gz && tar xvf cloudviewer_test4.tar.gz && rm -f cloudviewer_test4.tar.gz
 
 RUN pip install --upgrade setuptools
 RUN cp /opt/edo_cloudviewer/cloudviewer/edo_cloudviewer/ubuntu.cfg /opt/edo_cloudviewer
