@@ -44,9 +44,9 @@ RUN mkdir -p /opt/edo_cloudviewer/buildout-cache/eggs
 
 
 WORKDIR /opt/edo_cloudviewer
-RUN wget http://download.zopen.cn/releases/cloudviewer_test.tar.gz
-RUN tar xvf cloudviewer_test.tar.gz
-RUN rm -f cloudviewer_test.tar.gz
+RUN wget http://download.zopen.cn/releases/cloudviewer_test2.tar.gz
+RUN tar xvf cloudviewer_test2.tar.gz
+RUN rm -f cloudviewer_test2.tar.gz
 
 RUN pip install --upgrade setuptools
 RUN cp /opt/edo_cloudviewer/cloudviewer/edo_cloudviewer/ubuntu.cfg /opt/edo_cloudviewer
