@@ -31,7 +31,7 @@ RUN dpkg -i LibreOffice_4.1.4.2_Linux_x86-64_deb/DEBS/*.deb
 RUN rm -rf /LibreOffice_4.1.4.2_Linux_x86-64_deb
 RUN pip install uwsgi
 
-RUN WORKDIR /opt
+WORKDIR /opt
 RUN mkdir -p /opt/edo_cloudviewer/app/fts_app
 RUN mkdir -p /opt/edo_cloudviewer/app/fts_worker
 RUN mkdir -p /opt/edo_cloudviewer/app/fts_web
@@ -56,7 +56,7 @@ RUN cp /opt/edo_cloudviewer/cloudviewer/edo_cloudviewer/bootstrap.py /opt/edo_cl
 RUN python bootstrap.py
 RUN bin/buildout install supervisord
 
-RUN WORKDIR /opt/edo_cloudviewer/app/fts_web
+WORKDIR /opt/edo_cloudviewer/app/fts_web
 RUN cp /opt/edo_cloudviewer/cloudviewer/fts_web/uwsgi.ini .
 RUN cp /opt/edo_cloudviewer/cloudviewer/fts_web/app.ini .
 RUN cp /opt/edo_cloudviewer/cloudviewer/fts_web/bootstrap.py .
