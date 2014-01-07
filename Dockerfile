@@ -54,7 +54,7 @@ RUN cp /opt/edo_cloudviewer/cloudviewer/edo_cloudviewer/base.cfg /opt/edo_cloudv
 RUN cp /opt/edo_cloudviewer/cloudviewer/edo_cloudviewer/buildout.cfg /opt/edo_cloudviewer
 RUN cp /opt/edo_cloudviewer/cloudviewer/edo_cloudviewer/bootstrap.py /opt/edo_cloudviewer
 RUN python bootstrap.py
-RUN bin/buildout install supervisord
+RUN bin/buildout install supervisor
 
 WORKDIR /opt/edo_cloudviewer/app/fts_web
 RUN cp /opt/edo_cloudviewer/cloudviewer/fts_web/uwsgi.ini .
