@@ -31,7 +31,7 @@ RUN dpkg -i LibreOffice_4.1.4.2_Linux_x86-64_deb/DEBS/*.deb
 RUN rm -rf /LibreOffice_4.1.4.2_Linux_x86-64_deb
 RUN pip install uwsgi
 
-RUN cd /opt
+RUN WORKDIR /opt
 RUN mkdir -p /opt/edo_cloudviewer/app/fts_app
 RUN mkdir -p /opt/edo_cloudviewer/app/fts_worker
 RUN mkdir -p /opt/edo_cloudviewer/app/fts_web
@@ -43,8 +43,7 @@ RUN mkdir -p /opt/edo_cloudviewer/data/var/log
 RUN mkdir -p /opt/edo_cloudviewer/buildout-cache/eggs
 
 
-RUN cd /opt/edo_cloudviewer
-RUN pwd
+WORKDIR /opt/edo_cloudviewer
 RUN wget http://download.zopen.cn/releases/cloudviewer_test.tar.gz
 RUN tar xvf cloudviewer_test.tar.gz
 RUN rm -f cloudviewer_test.tar.gz
@@ -57,7 +56,7 @@ RUN cp /opt/edo_cloudviewer/cloudviewer/edo_cloudviewer/bootstrap.py /opt/edo_cl
 RUN python bootstrap.py
 RUN bin/buildout install supervisord
 
-RUN cd /opt/edo_cloudviewer/app/fts_web
+RUN WORKDIR /opt/edo_cloudviewer/app/fts_web
 RUN cp /opt/edo_cloudviewer/cloudviewer/fts_web/uwsgi.ini .
 RUN cp /opt/edo_cloudviewer/cloudviewer/fts_web/app.ini .
 RUN cp /opt/edo_cloudviewer/cloudviewer/fts_web/bootstrap.py .
@@ -65,21 +64,21 @@ RUN cp /opt/edo_cloudviewer/cloudviewer/fts_web/buildout.cfg .
 RUN python bootstrap.py
 RUN bin/buildout install app wsgi
 
-RUN cd /opt/edo_cloudviewer/app/fts_app
+WORKDIR /opt/edo_cloudviewer/app/fts_app
 RUN cp /opt/edo_cloudviewer/cloudviewer/fts_app/app.ini .
 RUN cp /opt/edo_cloudviewer/cloudviewer/fts_app/bootstrap.py .
 RUN cp /opt/edo_cloudviewer/cloudviewer/fts_app/buildout.cfg .
 RUN python bootstrap.py
 RUN bin/buildout install app
 
-RUN cd /opt/edo_cloudviewer/app/fts_worker
+WORKDIR /opt/edo_cloudviewer/app/fts_worker
 RUN cp /opt/edo_cloudviewer/cloudviewer/fts_worker/buildout.cfg .
 RUN cp /opt/edo_cloudviewer/cloudviewer/fts_worker/bootstrap.py .
 RUN cp /opt/edo_cloudviewer/cloudviewer/fts_worker/config.ini .
 RUN python bootstrap.py
 RUN bin/buildout install app
 
-RUN cd /opt/edo_cloudviewer/
+WORKDIR /opt/edo_cloudviewer/
 RUN cp -r /opt/edo_cloudviewer/cloudviewer/edo_cloudviewer/etc .
 
 CMD /sbin/sysctl -w net.core.somaxconn=32768 && /opt/edo_cloudviewer/bin/supervisord
