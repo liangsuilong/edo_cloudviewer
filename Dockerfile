@@ -43,16 +43,17 @@ RUN mkdir -p /opt/edo_cloudviewer/data/var/log
 RUN mkdir -p /opt/edo_cloudviewer/buildout-cache/eggs
 
 
-RUN cd /opt/edo_cloudviewer/
+RUN cd /opt/edo_cloudviewer
+RUN pwd
 RUN wget http://download.zopen.cn/releases/cloudviewer_test.tar.gz
 RUN tar xvf cloudviewer_test.tar.gz
 RUN rm -f cloudviewer_test.tar.gz
 
 RUN pip install --upgrade setuptools
-RUN cp /opt/edo_cloudviewer/cloudviewer/edo_cloudviewer/ubuntu.cfg .
-RUN cp /opt/edo_cloudviewer/cloudviewer/edo_cloudviewer/base.cfg .
-RUN cp /opt/edo_cloudviewer/cloudviewer/edo_cloudviewer/buildout.cfg .
-RUN cp /opt/edo_cloudviewer/cloudviewer/edo_cloudviewer/bootstrap.py .
+RUN cp /opt/edo_cloudviewer/cloudviewer/edo_cloudviewer/ubuntu.cfg /opt/edo_cloudviewer
+RUN cp /opt/edo_cloudviewer/cloudviewer/edo_cloudviewer/base.cfg /opt/edo_cloudviewer
+RUN cp /opt/edo_cloudviewer/cloudviewer/edo_cloudviewer/buildout.cfg /opt/edo_cloudviewer
+RUN cp /opt/edo_cloudviewer/cloudviewer/edo_cloudviewer/bootstrap.py /opt/edo_cloudviewer
 RUN python bootstrap.py
 RUN bin/buildout install supervisord
 
