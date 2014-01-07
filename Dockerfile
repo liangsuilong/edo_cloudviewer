@@ -1,6 +1,6 @@
 FROM ubuntu:12.04
 
-MAINTAINER Liang Suilong <liangsuilong@gmail.com>
+MAINTAINER liangsuilong@gmail.com
 
 RUN echo "deb http://mirrors.ustc.edu.cn/ubuntu/ precise main restricted universe multiverse" > /etc/apt/sources.list
 RUN echo "deb http://mirrors.ustc.edu.cn/ubuntu/ precise-security main restricted universe multiverse" >> /etc/apt/sources.list
