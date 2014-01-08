@@ -19,7 +19,7 @@ RUN echo "deb http://mirrors.ustc.edu.cn/ubuntu/ precise main restricted univers
     add-apt-repository -y ppa:guilhem-fr/swftools && \
     apt-get -y update && \
     apt-get -y install build-essential python-dev zlib1g-dev libjpeg62-dev libtiff-tools python-imaging unrtf pstotext source-highlight gsfonts ttf-wqy-zenhei ffmpeg ffmpegthumbnailer lame unrar libungif4-dev libfreetype6-dev poppler-utils nginx fontconfig libxslt1-dev wget xlhtml pdf2htmlex swftools && \
-    apt-get -y clean all
+    apt-get -y clean all && \
     wget http://mirrors.ustc.edu.cn/tdf/libreoffice/stable/4.1.4/deb/x86_64/LibreOffice_4.1.4_Linux_x86-64_deb.tar.gz && \
     tar xvf LibreOffice_4.1.4_Linux_x86-64_deb.tar.gz && \
     dpkg -i LibreOffice_4.1.4.2_Linux_x86-64_deb/DEBS/*.deb && \
